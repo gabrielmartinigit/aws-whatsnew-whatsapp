@@ -34,11 +34,11 @@ def update_latest(timest):
     ddb.update_item(
         TableName=table,
         Key={
-            "rss": {"S":key}
+            "rss": {"S": key}
         },
         UpdateExpression="SET #9feb0 = :9feb0",
-        ExpressionAttributeNames={"#9feb0":attribute},
-        ExpressionAttributeValues={":9feb0": {"S":timest}}
+        ExpressionAttributeNames={"#9feb0": attribute},
+        ExpressionAttributeValues={":9feb0": {"S": timest}}
     )
     print('Updated ddb {}: {}'.format(attribute, timest))
     return
@@ -68,6 +68,7 @@ def aws_news(event=None, context=None):
     # verify last new and actual
     now_timest = str(int(time.mktime(news['entries'][0]['published_parsed'])))
     last_timest = get_latest()
+
     if now_timest == last_timest:
         print("no news")
         return
