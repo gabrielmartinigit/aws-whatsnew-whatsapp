@@ -1,6 +1,8 @@
 # AWS Whats New WhatsApp notifications
 Are you tired to try to be updated about AWS? Would you like to be notified every time AWS launches a new feature or service? This simple app reads the AWS Whats New RSS and send you a notification via WhatsApp about the latest entry.
 
+![architecture](architecture.jpg)
+
 _pre requisites:_
 * Twilio account
 * AWS CLI
