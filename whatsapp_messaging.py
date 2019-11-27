@@ -26,7 +26,9 @@ def get_rss(url):
 # get the latest notification
 def get_latest():
     last_timest = ddb.scan(TableName=table)
-    return last_timest['Items'][0]['timest']['S']
+    last_timest = last_timest['Items'][0]['timest']['S']
+    print('Latest ddb timest: {}'.format(last_timest))
+    return last_timest
 
 
 # update the latest notification
@@ -68,9 +70,9 @@ def aws_news(event=None, context=None):
     # verify last new and actual
     now_timest = str(int(time.mktime(news['entries'][0]['published_parsed'])))
     last_timest = get_latest()
-
+    print('Now ddb timest: {}'.format(now_timest))
     if now_timest == last_timest:
-        print("no news")
+        print("No news")
         return
     else:
         # get the article meta data and send notification
