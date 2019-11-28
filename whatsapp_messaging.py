@@ -57,7 +57,7 @@ def send_message(title, link):
         msg_subscribers = whatsapp_client.messages.create(
             body=message,
             from_='whatsapp:{}'.format(twilio_number),
-            to='whatsapp:' + value,
+            to='whatsapp:{}'.format(value),
         )
         print('Sent to: {} (id: {})'.format(value, msg_subscribers.sid))
     return
@@ -65,7 +65,7 @@ def send_message(title, link):
 
 def aws_news(event=None, context=None):
     news = get_rss(aws_whats_new_url)
-    print("Feed: {}".format(aws_whats_new_url))
+    print('Feed: {}'.format(aws_whats_new_url))
 
     # verify last new and actual
     now_timest = str(int(time.mktime(news['entries'][0]['published_parsed'])))
