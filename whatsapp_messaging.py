@@ -50,8 +50,8 @@ def update_latest(timest):
 def send_message(title, link):
     # numbers and messages
     whatsapp_client = Client(twilio_sid, auth_token)
-    now = datetime.datetime.now()
-    message = 'AWS News {}: {} ({})'.format(now.year, title, link)
+    title = ' notification AWS NEWS title is {} and the link '.format(title)
+    message = 'Your {} code is {}'.format(title, link)
 
     for key, value in contact_directory.items():
         msg_subscribers = whatsapp_client.messages.create(
